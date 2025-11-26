@@ -1,14 +1,18 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
+const { connectDB } = require('./src/infrastructure/database/mongo/config');
 const app = express();
+
+// Connect to Database
+connectDB();
  
 // Middlewares
 app.use(morgan('dev')); // Logging [cite: 1122]
 app.use(express.json()); // Body Parser [cite: 1129]
  
 // TODO: Cargar Rutas (lo haremos en Clase 2)
-const productRoutes = require('./src/presentation/controllers/routes/product.routes.js');
+const productRoutes = require('./src/presentation/routes/product.routes.js');
 app.use('/api/v1/products', productRoutes);
  
 // Healthcheck Endpoint (para probar)
