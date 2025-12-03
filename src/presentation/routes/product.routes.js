@@ -6,7 +6,7 @@ const ProductService = require("../../application/use-cases/product.service");
 // const MockProductRepository = require("../../../infrastructure/repositories/product.mock.repository");
 // const productRepository = new MockProductRepository();
 
-const productMongoRepository = require("../../infrastructure/database/mongo/product.mongo.repository");
+const productMongoRepository = require("../../infrastructure/repositories/database/mongo/product.mongo.repository");
 const productRepository = new productMongoRepository();
 
 const productService = new ProductService(productRepository);
